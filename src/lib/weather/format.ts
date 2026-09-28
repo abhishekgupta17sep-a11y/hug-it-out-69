@@ -51,12 +51,10 @@ const DIRS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW"
 export const compass = (deg: number | null) => (deg == null ? "N/A" : DIRS[Math.round(deg / 22.5) % 16]);
 
 /** Open-Meteo returns local wall-clock strings; treat them as UTC for display so no timezone shift happens. */
-const wall = (iso: string) => new Date(iso.length <= 10 ? `${iso}T00:00:00Z` : `${iso}:00Z`.replace(/:00:00Z$/, ":00Z").replace(/(T\d\d:\d\d):00Z$/, "$1:00Z"));
 const asDate = (iso: string) => {
   const s = iso.length <= 10 ? `${iso}T00:00` : iso.slice(0, 16);
   return new Date(`${s}:00Z`);
 };
-void wall;
 
 export const fmtHour = (iso: string) =>
   asDate(iso).toLocaleTimeString("en-US", { hour: "numeric", timeZone: "UTC" });
