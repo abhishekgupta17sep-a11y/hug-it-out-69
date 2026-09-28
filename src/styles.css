@@ -142,3 +142,83 @@
     color: var(--color-foreground);
   }
 }
+
+/* ===== WeatherNow design ===== */
+:root {
+  --background: oklch(0.97 0.012 230);
+  --foreground: oklch(0.22 0.03 250);
+  --card: oklch(1 0 0 / 0.58);
+  --card-foreground: oklch(0.22 0.03 250);
+  --popover: oklch(0.99 0.005 230);
+  --popover-foreground: oklch(0.22 0.03 250);
+  --primary: oklch(0.6 0.15 235);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(1 0 0 / 0.5);
+  --secondary-foreground: oklch(0.25 0.03 250);
+  --muted: oklch(0.93 0.015 235 / 0.7);
+  --muted-foreground: oklch(0.45 0.03 250);
+  --accent: oklch(0.82 0.14 75);
+  --accent-foreground: oklch(0.22 0.03 250);
+  --destructive: oklch(0.58 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(1 0 0 / 0.65);
+  --input: oklch(1 0 0 / 0.7);
+  --ring: oklch(0.6 0.15 235);
+  --radius: 1.25rem;
+  --glass-shadow: 0 10px 40px -12px oklch(0.3 0.08 250 / 0.25);
+  --sky-clear-day: linear-gradient(160deg, oklch(0.82 0.1 225), oklch(0.9 0.08 205) 55%, oklch(0.95 0.05 90));
+  --sky-cloudy: linear-gradient(160deg, oklch(0.78 0.03 245), oklch(0.88 0.02 240));
+  --sky-rain: linear-gradient(160deg, oklch(0.55 0.08 250), oklch(0.72 0.05 240));
+  --sky-storm: linear-gradient(160deg, oklch(0.35 0.1 285), oklch(0.5 0.08 260));
+  --sky-snow: linear-gradient(160deg, oklch(0.9 0.03 230), oklch(0.97 0.01 220));
+  --sky-fog: linear-gradient(160deg, oklch(0.84 0.015 240), oklch(0.92 0.01 240));
+  --sky-night: linear-gradient(160deg, oklch(0.25 0.08 275), oklch(0.4 0.1 285));
+  --sky-idle: linear-gradient(160deg, oklch(0.86 0.07 225), oklch(0.94 0.04 200));
+}
+.dark {
+  --background: oklch(0.16 0.03 265);
+  --foreground: oklch(0.96 0.01 240);
+  --card: oklch(0.22 0.03 265 / 0.55);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.22 0.03 265);
+  --popover-foreground: oklch(0.96 0.01 240);
+  --primary: oklch(0.75 0.13 220);
+  --primary-foreground: oklch(0.16 0.03 265);
+  --secondary: oklch(1 0 0 / 0.08);
+  --secondary-foreground: oklch(0.96 0.01 240);
+  --muted: oklch(1 0 0 / 0.07);
+  --muted-foreground: oklch(0.72 0.03 245);
+  --accent: oklch(0.82 0.14 75);
+  --border: oklch(1 0 0 / 0.12);
+  --input: oklch(1 0 0 / 0.1);
+  --ring: oklch(0.75 0.13 220);
+  --glass-shadow: 0 10px 40px -12px oklch(0 0 0 / 0.6);
+  --sky-clear-day: linear-gradient(160deg, oklch(0.3 0.08 240), oklch(0.2 0.05 250));
+  --sky-cloudy: linear-gradient(160deg, oklch(0.26 0.03 250), oklch(0.18 0.02 255));
+  --sky-rain: linear-gradient(160deg, oklch(0.24 0.06 255), oklch(0.15 0.04 260));
+  --sky-storm: linear-gradient(160deg, oklch(0.2 0.08 290), oklch(0.12 0.04 275));
+  --sky-snow: linear-gradient(160deg, oklch(0.3 0.03 235), oklch(0.2 0.02 240));
+  --sky-fog: linear-gradient(160deg, oklch(0.26 0.015 245), oklch(0.18 0.01 245));
+  --sky-night: linear-gradient(160deg, oklch(0.18 0.07 280), oklch(0.1 0.04 270));
+  --sky-idle: linear-gradient(160deg, oklch(0.22 0.05 255), oklch(0.13 0.03 265));
+}
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+}
+body { font-family: var(--font-sans); }
+@utility glass {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+@keyframes float-y { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-8px) } }
+@utility animate-float { animation: float-y 5s ease-in-out infinite; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
+@utility animate-rise { animation: rise 0.6s cubic-bezier(.2,.7,.2,1) both; }
