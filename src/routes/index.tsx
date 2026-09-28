@@ -74,7 +74,7 @@ function Home() {
       setRecent((r) => [place, ...r.filter((x) => x.id !== place.id)].slice(0, MAX_RECENT));
     } catch (e) {
       const kind = e instanceof WeatherError ? e.kind : "api";
-      setError(ERROR_MESSAGES[kind]);
+      setError(ERROR_MESSAGES[kind] ?? "Weather service is temporarily unavailable.");
     } finally {
       setLoading(false);
       setLocating(false);
@@ -118,12 +118,12 @@ function Home() {
           <CityChips kind="recent" cities={recent} onPick={pick} onClear={() => setRecent([])} />
         </div>
 
-        {error && !loading && <ErrorMessage message={error} onRetry={last && last.type !== "query" ? () => run(last) : last ? () => run(last) : undefined} />}
+        {error && !loading && <ErrorMessage message={error} {...(last ? { onRetry: () => void run(last) } : {})} />}
         {loading && <LoadingState />}
 
         {data && !loading && (
-          <div key={data.place.id + data.fetchedAt} className="grid gap-6">
-            <div className="grid gap-6 lg:grid-cols-3">
+          <div key={data.place.id + data.fetchedAt} className="grid grid-cols-[minmax(0,1fr)] gap-6">
+            <div className="grid grid-cols-[minmax(0,1fr)] gap-6 lg:grid-cols-3">
               <CurrentWeather data={data} unit={unit} isFavorite={isFav} onToggleFavorite={toggleFav} />
               <SunInfo data={data} />
             </div>

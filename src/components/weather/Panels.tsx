@@ -48,7 +48,7 @@ function Bone({ className }: { className: string }) {
 
 export function LoadingState() {
   return (
-    <div aria-busy="true" aria-label="Loading weather" className="grid gap-6">
+    <div aria-busy="true" aria-label="Loading weather" className="grid grid-cols-[minmax(0,1fr)] gap-6">
       <span className="sr-only">Loading weather…</span>
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="glass rounded-3xl p-6 lg:col-span-2"><Bone className="h-6 w-40" /><Bone className="mt-6 h-24 w-56" /><Bone className="mt-4 h-5 w-32" /></div>

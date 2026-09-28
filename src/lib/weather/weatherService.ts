@@ -12,7 +12,7 @@ const REVERSE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client";
 async function getJson<T>(url: string, signal?: AbortSignal): Promise<T> {
   let res: Response;
   try {
-    res = await fetch(url, { signal });
+    res = await fetch(url, signal ? { signal } : {});
   } catch (e) {
     if ((e as Error).name === "AbortError") throw e;
     throw new WeatherError("network");
@@ -41,7 +41,7 @@ export async function getCitySuggestions(query: string, signal?: AbortSignal): P
     id: String(r.id),
     name: r.name,
     country: r.country ?? "",
-    region: r.admin1,
+    ...(r.admin1 ? { region: r.admin1 } : {}),
     lat: r.latitude,
     lon: r.longitude,
   }));
@@ -51,7 +51,7 @@ export async function findCity(query: string): Promise<Place> {
   if (!query.trim()) throw new WeatherError("empty");
   const results = await getCitySuggestions(query);
   if (!results.length) throw new WeatherError("not-found");
-  return results[0];
+  return results[0]!;
 }
 
 export async function reverseGeocode(lat: number, lon: number): Promise<Place> {
@@ -63,7 +63,7 @@ export async function reverseGeocode(lat: number, lon: number): Promise<Place> {
       id: `${lat.toFixed(3)},${lon.toFixed(3)}`,
       name: d.city || d.locality || "Your location",
       country: d.countryName ?? "",
-      region: d.principalSubdivision,
+      ...(d.principalSubdivision ? { region: d.principalSubdivision } : {}),
       lat,
       lon,
     };
@@ -128,18 +128,18 @@ export async function getWeatherByCoordinates(place: Place): Promise<WeatherBund
     fetchedAt: Date.now(),
     current: {
       time: c.time,
-      temp: num(c.temperature_2m),
-      feelsLike: num(c.apparent_temperature),
-      code: num(c.weather_code) ?? 0,
-      isDay: c.is_day === 1,
-      humidity: num(c.relative_humidity_2m),
-      windSpeed: num(c.wind_speed_10m),
-      windDir: num(c.wind_direction_10m),
-      pressure: num(c.pressure_msl),
-      visibility: num(c.visibility) ?? num(d.hourly.visibility[start]),
-      cloudCover: num(c.cloud_cover),
-      uv: num(c.uv_index),
-      dewPoint: num(c.dew_point_2m),
+      temp: num(c["temperature_2m"]),
+      feelsLike: num(c["apparent_temperature"]),
+      code: num(c["weather_code"]) ?? 0,
+      isDay: c["is_day"] === 1,
+      humidity: num(c["relative_humidity_2m"]),
+      windSpeed: num(c["wind_speed_10m"]),
+      windDir: num(c["wind_direction_10m"]),
+      pressure: num(c["pressure_msl"]),
+      visibility: num(c["visibility"]) ?? num(d.hourly.visibility[start]),
+      cloudCover: num(c["cloud_cover"]),
+      uv: num(c["uv_index"]),
+      dewPoint: num(c["dew_point_2m"]),
     },
     hourly,
     daily: d.daily.time.map((date, i) => ({
