@@ -48,7 +48,7 @@ export const fmtTemp = (c: number | null, u: Unit, withUnit = false) =>
   c == null ? "N/A" : `${Math.round(toUnit(c, u))}°${withUnit ? u : ""}`;
 
 const DIRS = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-export const compass = (deg: number | null) => (deg == null ? "N/A" : DIRS[Math.round(deg / 22.5) % 16]);
+export const compass = (deg: number | null) => (deg == null ? "N/A" : (DIRS[Math.round(deg / 22.5) % 16] ?? "N/A"));
 
 /** Open-Meteo returns local wall-clock strings; treat them as UTC for display so no timezone shift happens. */
 const asDate = (iso: string) => {

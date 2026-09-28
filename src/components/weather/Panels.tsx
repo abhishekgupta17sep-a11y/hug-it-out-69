@@ -4,7 +4,7 @@ import type { Place } from "@/lib/weather/types";
 
 export function Section({ id, title, children, action }: { id?: string; title: string; children: ReactNode; action?: ReactNode }) {
   return (
-    <section id={id} aria-labelledby={id ? `${id}-h` : undefined} className="scroll-mt-24">
+    <section id={id} aria-labelledby={id ? `${id}-h` : undefined} className="min-w-0 scroll-mt-24">
       <div className="mb-3 flex items-center justify-between px-1">
         <h2 id={id ? `${id}-h` : undefined} className="font-display text-lg font-semibold tracking-tight">{title}</h2>
         {action}
