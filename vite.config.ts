@@ -11,9 +11,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tanstackStart({
-      server: {
-        entry: "./server.ts",
-      },
+      server: { entry: "server" },
     }),
     nitro(),
     viteReact(),
