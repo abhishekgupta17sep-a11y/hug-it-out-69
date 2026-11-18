@@ -25,7 +25,7 @@ export function Header({ unit, onUnit, dark, onToggleTheme, onLocate, locating }
       <div className="glass mx-auto flex max-w-7xl items-center gap-3 rounded-2xl px-4 py-2.5">
         <a href="#home" className="flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-ring">
           <Logo />
-          <span className="font-display text-lg font-semibold tracking-tight">WeatherNow</span>
+          <span className="font-display text-lg font-semibold tracking-tight">WEATHER WISE</span>
         </a>
         <nav aria-label="Main" className="ml-6 hidden gap-1 md:flex">
           {NAV.map((n) => (
