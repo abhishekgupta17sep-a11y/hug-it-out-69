@@ -1,26 +1,40 @@
-# Hello World Project
+# WeatherNow
 
-hii
+WeatherNow is a responsive weather dashboard for checking current conditions, hourly forecasts, 7-day forecasts, UV index, wind, and sunrise/sunset information for cities around the world.
 
-This project was built with [Lovable](https://lovable.dev).
+## Features
 
-**Live app**: https://hug-it-out-69.lovable.app
+- Search for weather by city
+- Use your device location to check local weather
+- Current conditions and weather summary
+- Hourly and 7-day forecasts
+- UV, wind, and sunrise/sunset details
+- Save favorite cities and revisit recent searches
+- Light and dark themes
+- Celsius and Fahrenheit units
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5995439e-f86d-57db-95f5-28f2b043d30e).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Weather data is provided by [Open-Meteo](https://open-meteo.com/).
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Requirements: Node.js and Bun (or another package manager compatible with the lockfile).
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+git clone https://github.com/abhishekgupta17sep-a11y/hug-it-out-69.git
+cd hug-it-out-69
+bun install
+bun run dev
+```
+
+## Build
+
+```sh
+bun run build
+bun run preview
+```
+
+## Quality checks
+
+```sh
+bun run lint
 ```
