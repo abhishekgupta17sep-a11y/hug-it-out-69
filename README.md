@@ -1,6 +1,6 @@
-# WeatherNow
+# WEATHER WISE — Weather Forecast App
 
-WeatherNow is a responsive weather dashboard for checking current conditions, hourly forecasts, 7-day forecasts, UV index, wind, and sunrise/sunset information for cities around the world.
+WEATHER WISE is a responsive weather dashboard for checking current conditions, hourly forecasts, 7-day forecasts, UV index, wind, and sunrise/sunset information for cities around the world.
 
 ## Features
 
