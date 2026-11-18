@@ -73,8 +73,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "WeatherNow" },
-      { name: "description", content: "WeatherNow — your weather, beautifully simplified." },
+      { title: "WEATHER WISE | Weather Forecast App" },
+      { name: "description", content: "WEATHER WISE — your weather forecast, beautifully simplified." },
     ],
     links: [
       {
